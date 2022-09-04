@@ -9,7 +9,12 @@ function ExpenseForm(props) {
         date: ""
     })
 
+    const [isValid, setIsValid] = useState(true)
+
     const titleHandler = (e) => {
+        if (e.target.value.trim().length > 0) {
+            setIsValid(true)
+        }
         setExpense((prevState) => {
             return {
                 ...prevState,
@@ -47,6 +52,12 @@ function ExpenseForm(props) {
             date: new Date(expense.date)
         }
 
+        //validation 
+
+        if (expenseData.title.trim().length === 0) {
+            setIsValid(false)
+            return;
+        }
         //function via props for child -> parent comunnication
         //pointer to the function 
         props.onSaveExpenseData(expenseData);
@@ -66,8 +77,8 @@ function ExpenseForm(props) {
     return (
         <form onSubmit={sumbitHandler}>
             <div className="new-expense__controls">
-                <div className="new-expense__control">
-                    <label>title</label >
+                <div className={`new-expense__control ${!isValid ? 'invalid' : ''}`}>
+                    <label >title</label >
                     <input type='text' value={expense.title} onChange={titleHandler} />
                 </div >
                 <div className="new-expense__control">
