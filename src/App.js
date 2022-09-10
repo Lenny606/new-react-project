@@ -4,6 +4,7 @@ import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpenses/NewExpense';
 import { useState } from 'react';
 import AddUser from './components/User/AddUser';
+import UsersList from './components/User/UsersList';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
 
     <div>
       <AddUser />
+      <UsersList users={[]} />
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expenses} />
     </div>
