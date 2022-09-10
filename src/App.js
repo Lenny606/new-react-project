@@ -14,19 +14,29 @@ function App() {
     { id: "3", title: "Beer", amount: 50, date: new Date(2022, 9, 1) }
   ]
 
+  const [usersList, setUsersList] = useState([])
+
   const [expenses, setExpenses] = useState(dummy);
 
   const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
-    })
-  }
+    });
+  };
+
+  const usersListHandler = (name, age) => {
+    setUsersList((prevUsers) => {
+      return [{ username: name, userage: age, id: Math.random().toString() }, ...prevUsers]
+    });
+  };
+
+  console.log(usersList);
 
   return (
 
     <div>
-      <AddUser />
-      <UsersList users={[]} />
+      <AddUser onAddUser={usersListHandler} />
+      <UsersList users={usersList} />
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expenses} />
     </div>
