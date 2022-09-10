@@ -3,6 +3,7 @@ import "./components/Expenses/expenses.css"
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpenses/NewExpense';
 import { useState } from 'react';
+import AddUser from './components/User/AddUser';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
   return (
 
     <div>
+      <AddUser />
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expenses} />
     </div>
