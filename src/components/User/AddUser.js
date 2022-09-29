@@ -1,9 +1,10 @@
 import Button from "../UI/Button";
 import Card from "../UI/Card";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import "../UI/Card.css";
 import ErrorModal from "../UI/ErrorModal";
 import Wrapper from "../Helpers/Wrapper";
+import Context from "../store/context";
 
 const AddUser = (props) => {
 
@@ -13,6 +14,8 @@ const AddUser = (props) => {
     //const [userName, setUserName] = useState('');
     //const [age, setAge] = useState('');
     const [error, setError] = useState(null)
+
+    const ctx = useContext(Context);  // ready for some added context
 
     // const userNameHandler = (e) => {
     //     setUserName(e.target.value)

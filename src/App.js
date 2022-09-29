@@ -5,6 +5,7 @@ import NewExpense from './components/NewExpenses/NewExpense';
 import { useState } from 'react';
 import AddUser from './components/User/AddUser';
 import UsersList from './components/User/UsersList';
+import Context from './components/store/context';
 
 function App() {
 
@@ -35,10 +36,12 @@ function App() {
   return (
 
     <div>
-      <AddUser onAddUser={usersListHandler} />
-      <UsersList users={usersList} />
-      <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses expenses={expenses} />
+      <Context.Provider>
+        <AddUser onAddUser={usersListHandler} />
+        <UsersList users={usersList} />
+        <NewExpense onAddExpense={addExpenseHandler} />
+        <Expenses expenses={expenses} />
+      </Context.Provider>
     </div>
 
   );
